@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# Transcripts (output files)
+*.txt
+
+# Media files
+*.m4a
+*.mp3
+*.wav
+*.ogg
+*.flac
+*.aac
+*.wma
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.avi
+*.m4v
+*.mpg
+*.mpeg
+
+# Python
+__pycache__/
+*.pyc
+
+# Claude Code local settings
+.claude/
