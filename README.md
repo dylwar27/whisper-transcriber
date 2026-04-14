@@ -27,8 +27,26 @@ The Whisper package itself is auto-installed on first run.
 
 ## Usage
 
+Two flavors, same behavior — pick one:
+
+### Option A: `WhisperTranscriber.app` (recommended)
+
+Preserves its executable bit through Dropbox, zip, AirDrop, etc. — no `chmod` needed.
+
+1. Drop `WhisperTranscriber.app` into any folder with audio or video files.
+2. Double-click it.
+3. First time only: macOS Gatekeeper will block an unsigned app — right-click → **Open** → **Open** to approve. Subsequent runs just double-click.
+4. Each media file gets a `filename.txt` written alongside it.
+
+Don't have the `.app`? Build it from source:
+```bash
+./build-app.sh
+```
+
+### Option B: `transcribe.command` (shell script)
+
 1. Copy `transcribe.command` into any folder with audio or video files.
-2. Make it executable (first time only):
+2. Make it executable (first time only, and again after Dropbox sync strips the bit):
    ```bash
    chmod +x transcribe.command
    ```
@@ -36,7 +54,6 @@ The Whisper package itself is auto-installed on first run.
    ```bash
    ./transcribe.command
    ```
-4. Each media file gets a `filename.txt` written alongside it.
 
 ## Output format
 
@@ -48,7 +65,7 @@ The Whisper package itself is auto-installed on first run.
 
 ## Model
 
-Uses Whisper's `base` model by default — a good balance of speed and accuracy for most voice recordings. To use a different model, edit this line in `transcribe.command`:
+Uses Whisper's `base` model by default — a good balance of speed and accuracy for most voice recordings. To use a different model, edit this line in `transcribe.command` (or `app-src/transcribe.sh` if you're using the `.app`, then re-run `build-app.sh`):
 
 ```python
 model = whisper.load_model("base")
