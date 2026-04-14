@@ -64,9 +64,10 @@ for i, f in enumerate(to_do, 1):
         lines = []
         for seg in result["segments"]:
             start = seg["start"]
+            text = seg["text"].strip()
             h, m, s = int(start // 3600), int((start % 3600) // 60), start % 60
             timestamp = f"[{h:02d}:{m:02d}:{s:05.2f}]"
-            lines.append(f"{timestamp} {seg['text'].strip()}")
+            lines.append(f"{timestamp} {text}")
         f.with_suffix(".txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
         print("done")
         ok += 1
